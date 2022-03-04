@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+  int i,tamanho, soma,segura;
+  
+  char senha[100], letramin,letramai, c, numero, especial;
+  
+  letramin=0;
+  letramai=0;
+  numero=0;
+  especial=0;
+  soma=0;
+  segura=0;
+  printf("senha = ");
+  scanf("%s", senha);
+  
+  tamanho=strlen(senha);
+  
+  for (i=0; i<tamanho; i++)
+  {
+    c=senha[i];
+    
+    if((c >='a' && c<= 'z') )
+    {
+        letramin=1;
+    }
+    if((c >='A' && c<= 'B') )
+    {
+        letramai=1;
+    }
+     if(c >='0' && c<='9')
+    {
+        numero=1;
+    }
+    if(c == '!'||c=='@'||c=='#'||c=='$'||c=='%'||c=='^'||
+    c=='&'||c=='*'|| c=='('||c==')'||c=='-'||c=='+')
+    {
+        especial=1;
+    }
+}
+soma=letramin+letramai+numero+especial;
+if(soma==4 && tamanho>=6)
+{
+    segura=0;
+}
+if (tamanho<6)
+{
+    segura=6-tamanho;
+}
+if (tamanho>=6 && soma<4)
+{
+ segura=4-soma;
+}
+ 
+  
+  printf("falta: %d\n",segura);
+  
+  return 0;
+}
